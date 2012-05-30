@@ -22,9 +22,6 @@ def write_cfg(fname):
 
 def is_since(m, since):
 	dt = datetime.strptime(m.date[:-5], "%Y-%m-%dT%H:%M:%S")
-	print dt
-	print since
-	print m
 	return dt >= since 
 
 def notify(n, m):
