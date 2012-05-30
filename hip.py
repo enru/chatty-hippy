@@ -28,13 +28,16 @@ def is_since(m, since):
 	return dt >= since 
 
 def notify(n, m):
-	n.update("%s: %s" % (m.__getattribute__('from')['name'], m.message))
+	n.update(m.__getattribute__('from')['name'], m.message)
 	n.show()
 	sleep(3)
 
 cfg_file = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'hipchat.cfg')
 
 init_cfg()
+
+if not pynotify.init("hipchat"):
+	sys.exit(1)
 
 n = pynotify.Notification("hipchat", "firing up")
 
